@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flash Credit - Peer to Peer credit flatform</title>
+
+    <link href="../asset/styles.css" rel="stylesheet" />
+
+    <!-- <script src="../javascript/script.js" > </script> -->
+
+    <script src="personal-info.js">
+      async
+    </script>
+
+    <script type="module" src="../ggmap/ggmap.js" defer></script>
+
+    <!-- bootstrap related -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <!-- logo  -->
+    <link rel="icon" href="../asset/image/flash-credit-logo.png" type="image/x-icon" />
+
+    <gmpx-api-loader solution-channel="GMP_QB_addressselection_v4_cAC"></gmpx-api-loader>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html">
+          <img src="/asset/image/flash-credit-logo.png" style="height: 4rem" alt="FE Credit Logo" />
+        </a>
+        <p class="mt-3 fs-5" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: green">FLASH CREDIT</p>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#">Founder</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="about-us.html">About us</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">Products</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Consultation</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-success text-white ms-2" href="#">Apply Now</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-success text-white ms-2" href="#">Invest with us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <style></style>
+
+    <div class="container">
+      <a class="row align-items-center justify-content-center" href="amount-money.html"> go to amount</a>
+      <a class="row align-items-center justify-content-center" href="personal-info.html"> go to personal detail</a>
+      <a class="row align-items-center justify-content-center" href="bank-input.html"> go to bank input</a>
+      <a class="row align-items-center justify-content-center" href="phone-verification.html"> go to phone verfication</a>
+    </div>
+
+    <!-- Personal Information Form I SHOLD ADD 1 MORE FEATURE THAT SAVE THE DATA WHEN USER COME BACK AND CHANGE THEIR MIND -->
+
+    <h4 class="text-center" id="temp-loan-use-info"></h4>
+
+    <section class="bg-light">
+      <div class="container py-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="card shadow-sm">
+              <div class="card-body p-4">
+                <!-- Progress bar -->
+                <div class="mb-4">
+                  <div class="text-center small mb-2">20% complete</div>
+                  <div class="progress mb-2">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <div class="d-flex justify-content-between px-5">
+                    <div class="progress-step active">1</div>
+                    <div class="progress-step">2</div>
+                    <div class="progress-step">3</div>
+                    <div class="progress-step">4</div>
+                    <div class="progress-step">5</div>
+                  </div>
+                </div>
+
+                <!-- Form header -->
+                <div class="text-center mb-4">
+                  <h2 class="mb-2">Your details</h2>
+                  <p class="text-muted">Tell us a little about yourself to get started.</p>
+                </div>
+
+                <!-- Form -->
+                <form>
+                  <!-- Title -->
+                  <div class="mb-3">
+                    <label class="form-label">Title</label>
+                    <div class="d-flex gap-2">
+                      <div class="btn-group" role="group">
+                        <input type="radio" class="btn-check" name="title" id="mr" checked  value="male" />
+                        <label class="btn btn-outline-secondary" for="mr">Mr</label>
+
+                        <input type="radio" class="btn-check" name="title" id="mrs"  value="female" />
+                        <label class="btn btn-outline-secondary" for="mrs">Mrs</label>
+
+                        <input type="radio" class="btn-check" name="title" id="miss" value="female"  />
+                        <label class="btn btn-outline-secondary" for="miss">Miss</label>
+
+                        <input type="radio" class="btn-check" name="title" id="ms" value="female" />
+                        <label class="btn btn-outline-secondary" for="ms">Ms</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Name fields -->
+                  <div class="mb-3">
+                    <label class="form-label">First name (as per your ID)</label>
+                    <input type="text" class="form-control" id="first-name-input" required />
+                    <div class="form-text text-danger ">Please specify your first name.</div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Middle name (as per your ID, if applicable)</label>
+                    <input type="text" class="form-control" id="middle-name-input" />
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Last name (as per your ID)</label>
+                    <input type="text" class="form-control" id="last-name-input" required />
+                  </div>
+
+                  <!-- Date of birth -->
+                  <div class="mb-3">
+                    <label class="form-label">Date of birth (notice we only accept 18yo plus apllicant)</label>
+                    <input type="date" class="form-control"  id="dob-input" required>
+                    <div class="form-text">Field is required</div>
+                  </div>
+
+                  <!-- Address Section -->
+                  <div class="mb-3">
+                    <label class="form-label">Address</label>
+                    <input type="text" class="form-control" id="location-input" placeholder="Street Address" />
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Apt, Suite, etc (optional)</label>
+                    <input type="text" class="form-control" placeholder="Apt, Suite, etc (optional)" />
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">City</label>
+                    <input type="text" class="form-control" id="locality-input" placeholder="City" />
+                  </div>
+
+                  <div class="half-input-container mb-3">
+                    <div class="row">
+                      <div class="col-6">
+                        <input type="text" class="form-control" id="administrative_area_level_1-input" placeholder="State/Province" />
+                      </div>
+                      <div class="col-6">
+                        <input type="text" class="form-control" id="postal_code-input" placeholder="Zip/Postal code" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Country</label>
+                    <input type="text" class="form-control" id="country-input" placeholder="Country" />
+                  </div>
+
+                  <!-- Contact details -->
+                  <div class="mb-3">
+                    <label class="form-label">Mobile number (10 number include 04)</label>
+                    <input type="tel" class="form-control" id="phone-num-input" placeholder="04__ ___ ___" required />
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email-input" required />
+                  </div>
+
+                  <!-- Terms checkboxes -->
+
+
+                  <div class="mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" required id="terms" />
+                      <label class="form-check-label" for="terms">
+                        I have reviewed, understand and accept the terms of the
+                        <a href="#">Privacy Policy</a>, the <a href="#">Acknowledgement and Consent</a> and the <a href="#">CC Statement Terms and Conditions</a>.
+                      </label>
+                    </div>
+                  </div>
+<!-- 
+                  <div class="mb-4">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="marketing" />
+                      <label class="form-check-label" for="marketing">
+                        By providing my details to Flash Credit, I am consenting to be contacted by telephone or email about offers to enter into, and invitations to apply for, any of Flash Credit credit contracts and products, including small amount
+                        credit contracts.
+                      </label>
+                    </div>
+                  </div> -->
+
+                  <!-- Submit button -->
+                  <div class="d-grid">
+                    <button id="person-basic-info" type="submit" class="btn btn-success btn-lg">Next</button>
+                  </div>
+                </form>
+
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-4 mt-5">
+      <div class="container">
+        <div class="row">
+          <!-- Contact Information -->
+          <div class="col-md-4 mb-3">
+            <h5>Contact Us</h5>
+            <p>Email: thai.ta.okg@gmail.com</p>
+            <p>Phone: +61 422 501 169</p>
+            <p>Address: 3000 swanton st, Melbourne, VIC, Australia</p>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="col-md-4 mb-3">
+            <h5>Quick Links</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="about-us.html" class="text-white text-decoration-none">About Us</a>
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none">Products</a>
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none">Consultation</a>
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none">FAQs</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Social Media -->
+          <div class="col-md-4 mb-3">
+            <h5>Follow Us</h5>
+            <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i> Facebook</a><br />
+            <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i> Twitter</a><br />
+            <a href="#" class="text-white"><i class="bi bi-linkedin"></i> LinkedIn</a>
+          </div>
+        </div>
+
+        <hr class="bg-light" />
+
+        <!-- Copyright -->
+        <div class="text-center">
+          <small>© 2024 Flash Credit. All Rights Reserved.</small>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

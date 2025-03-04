@@ -1,0 +1,78 @@
+
+:root {
+    --primary-color: #00a651;
+    --secondary-color: #e8f5e9;
+    --white-color: #ffffff;
+    --font-color: white;
+    --slider-bg-color: #f8f9fa;
+    --application-bg-color: #f8f9fa;
+}
+
+.hero-section {
+    background-color: var(--secondary-color);
+    padding: 40px 0;
+    min-height: 400px;
+    background-image: linear-gradient(rgba(var(--white-color), 0.1), rgba(var(--white-color), 0.1));
+}
+
+.product-card {
+    background-color: var(--primary-color);
+    color: var(--font-color);
+    border-radius: 25px;
+    padding: 15px 25px;
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-item {
+    text-align: center;
+    padding: 20px;
+}
+
+.range-container {
+    margin: 30px 0;
+}
+
+.navbar-brand img {
+    height: 40px;
+}
+
+.btn-success {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.range-value {
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 1.1em;
+}
+
+.slider-container {
+    background: var(--slider-bg-color);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.progress {
+    height: 8px;
+}
+.progress-step {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var( --application-bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    position: relative;
+    z-index: 1;
+}
+.progress-step.active {
+    background-color:    var(--primary-color);
+}

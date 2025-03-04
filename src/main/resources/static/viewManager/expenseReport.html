@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!--  <script src="expenseReport.js" async></script>-->
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+
+<h1>Expense Report</h1>
+<div id="report"></div>
+<button id="showInfo"> buttttt</button>
+
+<h1>Expense Report chart</h1>
+<div>
+  <h2>Expense Distribution</h2>
+  <canvas id="expensePieChart" width="400" height="400"></canvas>
+</div>
+<div>
+  <h2>Loan Interests Over Time</h2>
+  <canvas id="loanInterestLineChart" width="400" height="200"></canvas>
+</div>
+
+
+<script>
+
+
+
+  // Fetch JSON data from the Servlet
+  var but = document.getElementById("showInfo")
+  but.addEventListener('click' , function (event) {
+    event.preventDefault();
+    console.log("get user expense")
+
+    const reportDiv = document.getElementById('report');
+    reportDiv.innerHTML = `<p style="font-size: 18px; font-weight: bold;">Fetching data... ⏳</p>`;
+
+
+    // Fetch JSON data from the Servlet
+    fetch('http://localhost:8080/flash-credit/BorrowerServlet/getExpenseReport')
+            .then(response => response.json())
+            .then(data => {
+              renderCharts(data);
+            })
+            .catch(error => {
+              console.error('Error fetching data:', error);
+            });
+
+    function renderCharts(data) {
+      // Render Pie Chart for Expenses
+      renderExpensePieChart(data.payments);
+
+      // Render Line Chart for Loan Interests
+      renderLoanInterestLineChart(data.loanInterests.changeHistory);
+    }
+
+    function renderExpensePieChart(payments) {
+      const ctx = document.getElementById('expensePieChart').getContext('2d');
+      const labels = payments.map(payment => payment.division);
+      const amounts = payments.map(payment => Math.abs(parseFloat(payment.avgMonthly)));
+
+      new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Expense Distribution',
+            data: amounts,
+            backgroundColor: [
+              '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF',
+              '#FF9F40', '#C9CBCF', '#FFCD56', '#4DC0C0', '#FF8A80'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'Monthly Expense Distribution'
+            }
+          }
+        }
+      });
+    }
+
+    function renderLoanInterestLineChart(changeHistory) {
+      const ctx = document.getElementById('loanInterestLineChart').getContext('2d');
+      const labels = changeHistory.map(history => history.date);
+      const amounts = changeHistory.map(history => Math.abs(parseFloat(history.amount)));
+
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Loan Interests',
+            data: amounts,
+            borderColor: '#36A2EB',
+            fill: false
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'Loan Interests Over Time'
+            }
+          },
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: 'Month'
+              }
+            },
+            y: {
+              title: {
+                display: true,
+                text: 'Amount'
+              }
+            }
+          }
+        }
+      });
+    }
+  })
+</script>
+
+</body>
+</html>

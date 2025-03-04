@@ -1,0 +1,4 @@
+// key.js
+export const GG_MAP_API_KEY = "AIzaSyC1pt9lytKP0SknHYeeDv3XrP6oXlFDzoA";
+
+export const BASIQ_API_KEY = "Mzg2ODMyOTQtMmM4ZS00Nzg4LTk2YTYtYmVhZjEwMDk3YmNiOmI0YjU4NjY1LWRkMGItNGQzMy05ZWY2LWUxOTZlNTI0Yjg2Nw==";
