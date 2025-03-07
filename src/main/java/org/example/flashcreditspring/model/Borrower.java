@@ -17,8 +17,6 @@ public class Borrower {
     private String basiqUserId;  // PRIMARY KEY
 
 
-//    @Column(name = "mobile_number", nullable = false)
-//    private String mobileNumber;  // Direct field for mobile_number
 
     @OneToOne
     @JoinColumn(name = "mobile_number_fk", referencedColumnName = "phone_num")
@@ -26,9 +24,10 @@ public class Borrower {
     private User user;  // Reference to User using the same column
 
 
-//    @OneToOne
-//    @JoinColumn(name = "mobile_number", referencedColumnName = "phone_num")
-//    private User user;
+//    @OneToOne(mappedBy = "borrower", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private BorrowerReport borrowerReport;
+
+
 
     private String title;
     private String firstName;

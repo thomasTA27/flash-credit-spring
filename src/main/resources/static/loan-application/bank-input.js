@@ -67,12 +67,20 @@ class PopupManager {
 var connection = null;
 
 function sendBorrowerData(basiqUserId) {
-    fetch('http://localhost:8080/flash-credit/BorrowerServlet/getBorrowerConnectionstatus', {
+
+    var loanAmount = sessionStorage.getItem('loanAmountInSession');
+    var loanTenure = sessionStorage.getItem('loanDurationInSession');
+    fetch('http://localhost:8080/api/borrowers/basiqBankConnectionStatus', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify( { basiqUserId : basiqUserId } )
+        body: JSON.stringify( {
+            basiqUserId : basiqUserId,
+            loanAmount : loanAmount,
+            loanTenure : loanTenure
+
+        } )
     })
     .then(response => {
         if (!response.ok) {

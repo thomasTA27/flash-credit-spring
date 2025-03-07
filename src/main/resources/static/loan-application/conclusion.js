@@ -52,7 +52,25 @@ function displaySessionStorage() {
 
 $("#finish").click(function (){
     alert("hello")
+
 })
+
+
+window.onbeforeunload = function (event) {
+    if (basiqUserId) {
+        // Show warning before exit
+        event.preventDefault();
+        // event.returnValue = "Are you sure you want to leave? Your application will be lost.";
+
+        // Send delete request to backend
+        navigator.sendBeacon('http://localhost:8080/borrower/deleteBorrowerDetail',
+            JSON.stringify({ basiqUserId: basiqUserId })
+        );
+    }
+
+
+
+};
 
 // Call the function on page load
 window.onload = displaySessionStorage;

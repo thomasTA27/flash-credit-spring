@@ -19,13 +19,11 @@ function getBorrowerData() {
     const loanDuration = sessionStorage.getItem('loanDurationInSession');
     const loanAmount = sessionStorage.getItem('loanAmountInSession');
 
-    fetch('http://localhost:8080/flash-credit/BorrowerServlet/getBorrower', {
+    fetch('http://localhost:8080/api/borrowers/getListAccount', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'basiqUserId': basiqUserId ,// Send borrowerId via headers
-            'duration' :loanDuration,
-            'amount' :loanDuration
+            'basiqUserId': basiqUserId
         },
 
     })

@@ -125,10 +125,12 @@ document.addEventListener('DOMContentLoaded', function () {
                         console.log("Server response:", data);
 
                         // Extract tokenbBounce from response
-                        if (data.tonkenBounce) {
-                            console.log("Received tonkenBounce: is ", data.tonkenBounce);
 
-                            sessionStorage.setItem('tokenBounce', data.tonkenBounce);
+                        // tonkenBounce tokenBounce
+                        if (data.tokenBounce) {
+                            console.log("Received tokenBounce: is ", data.tokenBounce);
+
+                            sessionStorage.setItem('tokenBounce', data.tokenBounce);
 
 
                             console.log("Received basiqId:", data.basiqUserId);
@@ -152,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
                         } else {
-                            console.warn("tonkenBounce not found in response. lmao");
+                            console.warn("tokenBounce not found in response. hahaha");
                         }
                     })
                     .catch(error => {
