@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 postalCode: postalCode || "N/A", // Set "N/A" if postalCode is empty
                 country: country || "N/A", // Set "N/A" if country is empty
                 mobileNumber,
-                email,
+                email
 
             };
 

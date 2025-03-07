@@ -2,16 +2,15 @@ package org.example.flashcreditspring.controller;
 
 
 import org.example.flashcreditspring.model.Borrower;
+import org.example.flashcreditspring.model.BorrowerDTO;
 import org.example.flashcreditspring.model.User;
 import org.example.flashcreditspring.repository.UserRepository;
 import org.example.flashcreditspring.service.BorrowerService;
+import org.example.flashcreditspring.util.BasiqUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -26,11 +25,23 @@ public class BorrowerController {
     private UserRepository userRepository;
 
 
+    @Autowired
+    private BasiqUtil basiqUtil;
+
+    @GetMapping("/getAccessCode")
+    public ResponseEntity<String> getBorrowerById() {
+
+
+        return ResponseEntity.ok (   "this is api token is " + basiqUtil.getAccessCode());
+    }
+
     @PostMapping("/create")
-    public ResponseEntity<?> createBorrower(@RequestBody Borrower borrower) {
+    public ResponseEntity<?> createBorrower(@RequestBody BorrowerDTO borrowerDTO) {
 //        borrowerService.createBorrower();
 
-        System.out.println("Borrower: whasssup " + borrower.getUser().getPhoneNum());
+        Borrower borrower = borrowerService.createBorrower(borrowerDTO);
+
+//        System.out.println("Borrower: whasssup " + borrowerDTO.getCity());
 
 
 //        Optional<User> userOptional = userRepository.findById(borrower.getMobileNumber());
@@ -42,8 +53,8 @@ public class BorrowerController {
 //      User user = userOptional.get();
 
 
-        borrowerService.createBorrower(borrower);
+//        borrowerService.createBorrower(borrower);
 
-        return ResponseEntity.ok().body("Borrower created hahah " + borrower.getCity());
+        return ResponseEntity.ok().body("Borrower created hahah " + borrowerDTO.getCity());
     }
 }

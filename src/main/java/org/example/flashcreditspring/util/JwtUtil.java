@@ -1,15 +1,11 @@
-package org.example.flashcreditspring.security;
+package org.example.flashcreditspring.util;
 
 
 
-import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.security.Key;
-import java.util.Base64;
 import java.util.Date;
 
 @Component

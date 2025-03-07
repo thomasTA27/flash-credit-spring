@@ -1,6 +1,7 @@
 package org.example.flashcreditspring.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,6 +22,7 @@ public class Borrower {
 
     @OneToOne
     @JoinColumn(name = "mobile_number_fk", referencedColumnName = "phone_num")
+    @JsonIgnore
     private User user;  // Reference to User using the same column
 
 
@@ -45,10 +47,8 @@ public class Borrower {
     private String country;
     private String email;
 
+//    private boolean gender;
+
 //    @Column(name = "mobile_number", unique = true, nullable = false)
 //    private String mobileNumber; // Foreign key
-
-
-
-
 }

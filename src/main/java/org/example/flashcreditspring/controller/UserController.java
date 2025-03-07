@@ -1,21 +1,17 @@
 package org.example.flashcreditspring.controller;
 
 
-import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
 import org.example.flashcreditspring.model.User;
 import org.example.flashcreditspring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 
-import org.example.flashcreditspring.security.JwtUtil;
+import org.example.flashcreditspring.util.JwtUtil;
 
 @RestController
 @RequestMapping("/users")
