@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -19,42 +21,29 @@ import java.util.Optional;
 public class BorrowerController {
     @Autowired
     private  BorrowerService borrowerService;
-
-
     @Autowired
     private UserRepository userRepository;
-
-
     @Autowired
     private BasiqUtil basiqUtil;
 
+
     @GetMapping("/getAccessCode")
     public ResponseEntity<String> getBorrowerById() {
-
-
         return ResponseEntity.ok (   "this is api token is " + basiqUtil.getAccessCode());
     }
 
     @PostMapping("/create")
     public ResponseEntity<?> createBorrower(@RequestBody BorrowerDTO borrowerDTO) {
-//        borrowerService.createBorrower();
 
-        Borrower borrower = borrowerService.createBorrower(borrowerDTO);
+        String basiqUserId = borrowerService.createBorrower(borrowerDTO);
 
-//        System.out.println("Borrower: whasssup " + borrowerDTO.getCity());
+        String tokenBounce = basiqUtil.getAccessCodeClientSide(basiqUserId);
 
+        Map<String, String> response = new HashMap<>();
+        response.put("status", "success");
+        response.put("tokenBounce", tokenBounce);
+        response.put("basiqUserId", basiqUserId);
 
-//        Optional<User> userOptional = userRepository.findById(borrower.getMobileNumber());
-//
-//        if (userOptional.isEmpty()) {
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-//                    .body("Error: User with phone number " + borrower.getMobileNumber() + " not found.");
-//        }
-//      User user = userOptional.get();
-
-
-//        borrowerService.createBorrower(borrower);
-
-        return ResponseEntity.ok().body("Borrower created hahah " + borrowerDTO.getCity());
+        return ResponseEntity.ok().body(response);
     }
 }

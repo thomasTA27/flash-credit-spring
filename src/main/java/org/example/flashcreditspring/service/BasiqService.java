@@ -2,6 +2,7 @@ package org.example.flashcreditspring.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.example.flashcreditspring.model.BorrowerDTO;
 import org.example.flashcreditspring.util.BasiqUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,7 +29,7 @@ public class BasiqService {
         this.objectMapper = objectMapper;
     }
 
-    public String createBorrowerBasiq(String userJson) throws Exception {
+    public String createBorrowerBasiq(BorrowerDTO borrowerDTO) throws Exception {
         WebClient webClient = webClientBuilder.baseUrl(BASE_URL).build();
         try {
             String response = webClient.post()
@@ -36,7 +37,7 @@ public class BasiqService {
                     .header(HttpHeaders.CONTENT_TYPE, "application/json")
                     .header(HttpHeaders.ACCEPT, "application/json")
                     .header(HttpHeaders.AUTHORIZATION, "Bearer " + basiqUtil.getAccessCode() )
-                    .bodyValue(userJson)
+                    .bodyValue(borrowerDTO)
                     .retrieve()
                     .bodyToMono(String.class)
                     .block();  // block() is used here to make it a synchronous call (similar to HttpClient)
@@ -46,7 +47,7 @@ public class BasiqService {
             return rootNode.get("id").asText();
         } catch (WebClientResponseException ex) {
             // Handle error responses here
-            throw new Exception("Error during API call: " + ex.getResponseBodyAsString(), ex);
+            throw new Exception("Error during API call from func createBorrowerBasiq in BasiqService class : " + ex.getResponseBodyAsString(), ex);
         }
 
     }

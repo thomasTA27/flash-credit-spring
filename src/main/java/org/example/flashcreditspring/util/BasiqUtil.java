@@ -43,12 +43,6 @@ public class BasiqUtil {
     }
 
 
-public String getApiUrl(){
-
-        System.out.println("url is isisisisisisi  " + apiUrl);
-    return apiUrl;
-}
-
     public String getAccessCode() {
         try {
             String response = webClient.post()
