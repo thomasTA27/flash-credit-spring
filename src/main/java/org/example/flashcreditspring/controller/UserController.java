@@ -33,9 +33,11 @@ public class UserController {
         if (phoneNum == null || password == null) {
             return ResponseEntity.badRequest().body(Map.of("status", "error", "message", "Missing required fields"));
         }
-
+        String role = "USER";
         try {
-            User newUser = userService.createUser(phoneNum, password ,salt);
+            System.out.println("cereate");
+            User newUser = userService.createUser(phoneNum, password ,salt ,role );
+            System.out.println("finished");
             return ResponseEntity.ok(Map.of("status", "success", "message", "User created", "userId", newUser.getPhoneNum()));
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body(Map.of("status", "error", "message", "Signup failed"));
@@ -60,12 +62,15 @@ public class UserController {
         String phoneNum = payload.get("tel");
         String hashedPassword = payload.get("password");
 
-        Optional<User> userOpt = userService.getUserByPhoneNum(phoneNum);
-        if (userOpt.isEmpty() || !userOpt.get().verifyPassword(hashedPassword)) {
+        User u = userService.getUserByPhoneNum(phoneNum).orElse(null);
+
+
+//        Optional<User> userOpt = userService.getUserByPhoneNum(phoneNum);
+        if (u == null ) {
             return ResponseEntity.status(401).body(Map.of("message", "Invalid credentials"));
         }
 
-        String token = jwtUtil.generateToken(phoneNum);
+        String token = jwtUtil.generateToken(u);
         return ResponseEntity.ok(Map.of("token", token));
     }
 

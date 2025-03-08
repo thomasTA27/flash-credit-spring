@@ -9,8 +9,7 @@ but.addEventListener('click' , function (event) {
     const reportDiv = document.getElementById('report');
     reportDiv.innerHTML = `<p style="font-size: 18px; font-weight: bold;">Fetching data... ⏳</p>`;
 
-
-    fetch('http://localhost:8080/flash-credit/BorrowerServlet/getExpenseReport')
+    fetch('http://localhost:8080/flash-credit/Borr\nowerServlet/getExpenseReport')
     .then(response => response.json())
     .then(data => {
         // const reportDiv = document.getElementById('report');

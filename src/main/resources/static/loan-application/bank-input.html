@@ -38,67 +38,117 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Consultation</a>
             </li>
-            <li class="nav-item">
-              <a class="btn btn-success text-white ms-2" href="#">Apply Now</a>
+
+            <li class="nav-item " id="signOutButton">
+              <a class="btn btn-success text-white ms-2" href="#" id="signOutLink">Sign out</a>
             </li>
-            <li class="nav-item">
-              <a class="btn btn-success text-white ms-2" href="#">Invest with us</a>
-            </li>
+
           </ul>
         </div>
       </div>
     </nav>
 
-    <div class="container">
-      <a class="row align-items-center justify-content-center" href="amount-money.html"> go to amount</a>
-      <a class="row align-items-center justify-content-center" href="personal-info.html"> go to personal detail</a>
-      <a class="row align-items-center justify-content-center" href="bank-input.html"> go to bank input</a>
-      <a class="row align-items-center justify-content-center" href="phone-verification.html"> go to phone verfication</a>
-    </div>
+
+
+    <style>
+      .highlight-text {
+        font-weight: bold;
+        color: #007bff;
+      }
+      </style>
 
     <h4 class="text-center" id="temp-loan-use-info"></h4>
 
+    <div class="container mt-5">
+      <!-- Information Section -->
+      <div class="info-box mb-4">
+        <h2 class="text-primary text-center">Bank Connection Notice</h2>
+        <p class="text-center">
+          When you press the button, a pop-up will appear confirming that this is our <span class="highlight-text">third-party API banking service.</span>
+          We do not collect your sensitive  data such as loginId or Password . We only collect transaction and financial detail from third party API that you give permission that comply with
+          the australia law regulate commonwealth nation. Instead, we use "Open Banking", backed by "Basiq", to securely access your financial details.
+        </p>
+      </div>
+    </div>
 
-    <button id ="test">click me</button>
-<h1 id = "placeholder">this is something haha</h1>
-    <span >ShowBox</span>
-<h1 >the page will change in sec  <span id="countdown"> <span></h1>
-    <ul>
-      <li>
-        <span class="loginId">Wentworth-Smith</span> -
-        <span class="password">whislter</span>
-      </li>
-      <li>
-        <span class="loginId">Whistler</span> -
+    <h2 class="text-primary text-center">after connection success please close the pop up window to proceed</h2>
 
-      </li>
-      <li>
-        <span class="loginId">Gilfoyle</span> -
-        <span >PiedPiper</span>
-      </li>
-      <li>
-        <span class="loginId">gavinBelson</span> -
-        <span >hooli2016</span>
-      </li>
-      <li>
-        <span class="loginId">jared</span> -
-        <span class="password">django</span>
-      </li>
-      <li>
-        <span class="loginId">richard</span> -
-        <span >tabsnotspaces</span>
-      </li>
-      <li>
-        <span class="loginId">laurieBream</span> -
-        <span class="password">business2024</span>
-      </li>
-      <li>
-        <span class="loginId">ashMann</span> -
-        <span class="password">hooli2024</span>
-      </li>
-    </ul>
+    <div class="text-center">
+      <button id="activateConnectUserBank" class="btn btn-primary btn-lg" >
+        Connect to Your Bank
+      </button>
+    </div>
 
- 
+
+    <div class="text-center mt-4">
+      <h3 class="text-danger">
+        The page will change in <span id="countdown" class="countdown-timer">3</span> seconds.
+      </h3>
+    </div>
+
+
+    <!--    <h1>when you press the button the pop up will appear this is our third party API banking service we dont collect you data in our database . we use open banking backed by Basiq to get you finanical detail</h1>-->
+<!--    <button id ="activateConnectUserBank">Connection with bank</button>-->
+
+<!--<h1 >the page will change in sec  <span id="countdown"> </span> </h1>-->
+
+
+<!--    <h1>As the app is still in the development process please use the "Hooli" bank with all of the info that have below here</h1>-->
+
+
+<!--    <div class="container mt-5">-->
+<!--      <h2 class="text-center mb-4">User Login Credentials</h2>-->
+
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+          <thead class="table-dark">
+          <tr>
+            <th scope="col" class="text-center">Login ID</th>
+            <th scope="col" class="text-center">Password</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td class="text-center">Wentworth-Smith</td>
+            <td class="text-center">whislter</td>
+          </tr>
+          <tr>
+            <td class="text-center">Whistler</td>
+            <td class="text-center">ShowBox</td>
+          </tr>
+          <tr>
+            <td class="text-center">Gilfoyle</td>
+            <td class="text-center">PiedPiper</td>
+          </tr>
+          <tr>
+            <td class="text-center">gavinBelson</td>
+            <td class="text-center">hooli2016</td>
+          </tr>
+          <tr>
+            <td class="text-center">jared</td>
+            <td class="text-center">django</td>
+          </tr>
+          <tr>
+            <td class="text-center">richard</td>
+            <td class="text-center">tabsnotspaces</td>
+          </tr>
+          <tr>
+            <td class="text-center">laurieBream</td>
+            <td class="text-center">business2024</td>
+          </tr>
+          <tr>
+            <td class="text-center">ashMann</td>
+            <td class="text-center">hooli2024</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+
+
     <!-- Footer -->
     <footer class="bg-secondary text-white py-4 mt-5">
       <div class="container">

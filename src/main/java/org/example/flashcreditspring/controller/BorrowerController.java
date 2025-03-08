@@ -2,10 +2,10 @@ package org.example.flashcreditspring.controller;
 
 
 import lombok.SneakyThrows;
-import org.example.flashcreditspring.model.Borrower;
-import org.example.flashcreditspring.model.BorrowerDTO;
-import org.example.flashcreditspring.model.User;
+import org.example.flashcreditspring.model.*;
 import org.example.flashcreditspring.model.apiResponseHandle.Account;
+import org.example.flashcreditspring.repository.BorrowerReportRepository;
+import org.example.flashcreditspring.repository.BorrowerRepository;
 import org.example.flashcreditspring.repository.UserRepository;
 import org.example.flashcreditspring.service.BasiqService;
 import org.example.flashcreditspring.service.BorrowerService;
@@ -19,7 +19,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-
+//@CrossOrigin(origins = "*") //not recomended in production
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping("/api/borrowers")
 public class BorrowerController {
@@ -31,6 +32,10 @@ public class BorrowerController {
     private BasiqUtil basiqUtil;
     @Autowired
     private BasiqService basiqService;
+    @Autowired
+    private BorrowerRepository borrowerRepository;
+    @Autowired
+    private BorrowerReportRepository borrowerReportRepository;
 
 
     @GetMapping("/getAccessCode")
@@ -81,13 +86,36 @@ public class BorrowerController {
 
         String basiqUserId = requestBody.get("basiqUserId");
 
-//        String status = basiqService.checkBorrowerConnection(basiqUserId);
+        String phone = requestBody.get("phone");
 
 
+        BorrowerReport br = borrowerReportRepository.findById(basiqUserId).orElse(null);
+        if (br != null) {
+            borrowerReportRepository.delete(br);  // Deletes the entity from the database
+        } else {
+            System.out.println("BorrowerReport not found");
+        }
 
-        Map<String, String> response = new HashMap<>();
+        Borrower borrower = borrowerRepository.findById(basiqUserId).orElse(null);
+        if (borrower != null) {
+            borrowerRepository.delete(borrower);  // Deletes the entity from the database
+        } else {
+            System.out.println("BorrowerReport not found");
+        }
 
-        return ResponseEntity.ok().body(response);
+        User user = userRepository.findById(phone).orElse(null);
+        if (user != null) {
+            user.removeBasiqId();
+            userRepository.save(user);
+        }
+        else {
+            System.out.println("User not found");
+        }
+
+            System.out.println("we done");
+        //this can be optimized better by using foreign key then who depend on will be delete
+        //delted basiq_id in the user -> the borrower and borrowerReport will disapear as well
+        return ResponseEntity.ok().body("");
     }
 
 
@@ -105,5 +133,17 @@ public class BorrowerController {
             return ResponseEntity.noContent().build();
         }
 
+    }
+
+
+    @GetMapping("/getAllBorrower")
+    public List<BorrowerDetailDTO> getListAccount() {
+        return borrowerService.getAllBorrowers();
+    }
+
+
+    @GetMapping("/displayBorrower")
+    public List<BorrowerDetailDTO> displayAllBorrower() {
+        return borrowerService.getAllBorrowers();
     }
 }

@@ -3,20 +3,26 @@ package org.example.flashcreditspring.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
-import org.example.flashcreditspring.model.Borrower;
-import org.example.flashcreditspring.model.BorrowerDTO;
-import org.example.flashcreditspring.model.User;
+import org.example.flashcreditspring.model.*;
+import org.example.flashcreditspring.repository.BorrowerReportRepository;
 import org.example.flashcreditspring.repository.BorrowerRepository;
 import org.example.flashcreditspring.repository.UserRepository;
 import org.example.flashcreditspring.util.BasiqUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class BorrowerService {
 
     @Autowired
     private BorrowerRepository borrowerRepository;
+
+
+    @Autowired
+    private BorrowerReportRepository borrowerReportRepository;
 
     @Autowired
     private UserRepository userRepository;
@@ -66,6 +72,24 @@ public class BorrowerService {
             throw new RuntimeException("User with phone number " + borrower.getUser().getPhoneNum() + " does not exist.");
         }
         return basiqUserId;
+    }
+//
+//    public List<BorrowerDTO> getAllBorrowers() {
+//        List<Borrower> borrowers = borrowerRepository.findAll();
+//        return borrowers.stream()
+//                .map(BorrowerDetailDTOMapper::toDTO)
+//                .collect(Collectors.toList());
+//    }
+
+    public List<BorrowerDetailDTO> getAllBorrowers() {
+        List<Borrower> borrowers = borrowerRepository.findAll();
+
+        return borrowers.stream()
+                .map(borrower -> {
+                    BorrowerReport borrowerReport = borrowerReportRepository.findById(borrower.getBasiqUserId()).orElse(null);
+                    return BorrowerDetailDTOMapper.toDTO(borrower, borrowerReport);
+                })
+                .collect(Collectors.toList());
     }
 
 

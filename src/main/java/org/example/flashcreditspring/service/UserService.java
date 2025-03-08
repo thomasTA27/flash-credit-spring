@@ -21,7 +21,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User createUser(String phoneNum, String password , String salt) throws NoSuchAlgorithmException {
+    public User createUser(String phoneNum, String password , String salt , String role) throws NoSuchAlgorithmException {
 
         String bcryptHashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 
@@ -29,6 +29,8 @@ public class UserService {
         user.setPhoneNum(phoneNum);
         user.setPassword(bcryptHashedPassword);
         user.setSalt(salt);
+
+        user.setRole(role);
 
         return userRepository.save(user);
     }

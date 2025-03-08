@@ -26,51 +26,66 @@ function displaySessionStorage() {
         "loanDurationInSession": "Loan Duration"
     };
 
-    $("#sessionList").empty();
+    // $("#sessionList").empty();
 
     // Append each session item using jQuery
-    orderedKeys.forEach(key => {
-        const value = sessionStorage.getItem(key);
-        if (value !== null) {
-            const displayKey = keyLabels[key] || key;
-            $("#sessionList").append(`<li class = "text-bg-danger">${displayKey}: ${value} </li>`);
-        }
-    });
-
-    // const sessionList = document.getElementById('sessionList');
-    // sessionList.innerHTML = ''; // Clear any existing items
     // orderedKeys.forEach(key => {
     //     const value = sessionStorage.getItem(key);
     //     if (value !== null) {
     //         const displayKey = keyLabels[key] || key;
-    //         const listItem = document.createElement('li');
-    //         sessionList.textContent = `${displayKey}: ${value}`;
-    //         sessionList.appendChild(listItem);
+    //         $("#sessionList").append(`<li class = "text-bg-danger">${displayKey}: ${value} </li>`);
     //     }
     // });
-}
 
+    $("#sessionTableBody").empty();
+
+    orderedKeys.forEach(key => {
+        const value = sessionStorage.getItem(key);
+        if (value !== null) {
+            const displayKey = keyLabels[key] || key;
+            $("#sessionTableBody").append(`
+                    <tr>
+                        <td class="fw-bold">${displayKey}</td>
+                        <td class="text-secondary">${value}</td>
+                    </tr>
+                `);
+        }
+    });
+}
+let shouldSendRequest = true;
 $("#finish").click(function (){
-    alert("hello")
+    // alert("hello")let shouldSendRequest = true;
+
+    shouldSendRequest = false;
+    window.location.href ="../index.html"
+
 
 })
 
 
 window.onbeforeunload = function (event) {
-    if (basiqUserId) {
+    var phone = sessionStorage.getItem("mobileNumberSession");
+    var basiqUserId = sessionStorage.getItem("basiqUserId");
+
+    if (basiqUserId && shouldSendRequest) {
         // Show warning before exit
         event.preventDefault();
-        // event.returnValue = "Are you sure you want to leave? Your application will be lost.";
 
-        // Send delete request to backend
-        navigator.sendBeacon('http://localhost:8080/borrower/deleteBorrowerDetail',
-            JSON.stringify({ basiqUserId: basiqUserId })
-        );
+        // Send delete request to backend using fetch
+        fetch('http://localhost:8080/api/borrowers/deleteBorrowerDetail', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'  // Ensure Content-Type is JSON
+            },
+            body: JSON.stringify({
+                basiqUserId: basiqUserId,
+                phone: phone
+            })
+        })
+            .then(response => response.json())
+            .then(data => console.log("Response:", data))
+            .catch(error => console.error('Error:', error));
     }
-
-
-
 };
-
 // Call the function on page load
 window.onload = displaySessionStorage;

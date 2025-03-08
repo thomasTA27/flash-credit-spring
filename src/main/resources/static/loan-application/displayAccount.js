@@ -1,5 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+
+    const signOutLink = document.getElementById('signOutLink');
+
+
+    signOutLink.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent default link behavior
+        alert("you logout you will get direct to homepage")
+        sessionStorage.removeItem("token"); // Remove the token
+        window.location.href = "../index.html"; // Redirect to home page or login page
+    });
+
+
         getBorrowerData();
 
     const continueButtpon = this.getElementById("continue");
@@ -18,6 +30,29 @@ function getBorrowerData() {
 
     const loanDuration = sessionStorage.getItem('loanDurationInSession');
     const loanAmount = sessionStorage.getItem('loanAmountInSession');
+
+
+    function displayAccounts(accounts) {
+        const container = document.getElementById("accountsContainer");
+        container.innerHTML = ""; // Clear previous content
+        document.getElementById("placeholder").style.display = "none"; // Hide placeholder
+
+        accounts.forEach(account => {
+            const accountHTML = `
+                <div class="col-md-4">
+                    <div class="card shadow-sm p-3 account-card">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">${account.name}</h5>
+                            <p class="card-text"><strong>Account Number:</strong> ${account.id}</p>
+                            <p class="card-text"><strong>Balance:</strong> ${account.balance}</p>
+                            <p class="card-text"><strong>Avalable fund:</strong> ${account.availableFunds}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.innerHTML += accountHTML;
+        });
+    }
 
     fetch('http://localhost:8080/api/borrowers/getListAccount', {
         method: 'GET',

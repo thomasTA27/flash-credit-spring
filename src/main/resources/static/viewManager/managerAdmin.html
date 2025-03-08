@@ -6,7 +6,9 @@
   <title>Flash Credit - Peer to Peer credit flatform</title>
 
   <link href="../asset/styles.css" rel="stylesheet" />
-  <script src="../javascript/phone-verification.js" > async </script>
+  <script src="managerAdmin.js" > async </script>
+
+  <script src="../verifyAuth.js" async></script>
 
 
   <!-- bootstrap related -->
@@ -28,93 +30,41 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#">Founder</a></li>
-        <li class="nav-item">
-          <a class="nav-link" href="about-us.html">About us</a>
+
+        <li class="nav-item" id = "signOut">
+          <a class="btn btn-success text-white ms-2" href="#">Sign out</a>
         </li>
-        <li class="nav-item"><a class="nav-link" href="#">Products</a></li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Consultation</a>
-        </li>
-        <li class="nav-item">
-          <a class="btn btn-success text-white ms-2" href="#">Apply Now</a>
-        </li>
-        <li class="nav-item">
-          <a class="btn btn-success text-white ms-2" href="#">Invest with us</a>
-        </li>
+
       </ul>
     </div>
   </div>
 </nav>
 
-<div class="container">
-  <a class="row align-items-center justify-content-center" href="amount-money.html"> go to amount</a>
-  <a class="row align-items-center justify-content-center" href="personal-info.html"> go to personal detail</a>
-  <a class="row align-items-center justify-content-center" href="bank-input.html"> go to bank input</a>
-  <a class="row align-items-center justify-content-center" href="phone-verification.html"> go to phone verfication</a>
-</div>
 
 
 <!-- <h1>now verify ur phone num</h1> -->
 
 
-<h1>this is manager admin</h1>
-<h5>user 1</h5>
-<p> something dude</p>
+<h1 class="text-center" >this is manager admin</h1>
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Loan Information</h1>
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Duration (Weeks)</th>
+      <th>Loan Amount</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody id="loanTableBody">
+    <!-- Rows will be dynamically inserted here -->
+    </tbody>
+  </table>
+</div>
 
 
-
-
-<!-- Footer -->
-<footer class="bg-secondary text-white py-4 mt-5">
-  <div class="container">
-    <div class="row">
-      <!-- Contact Information -->
-      <div class="col-md-4 mb-3">
-        <h5>Contact Us</h5>
-        <p>Email: thai.ta.okg@gmail.com</p>
-        <p>Phone: +61 422 501 169</p>
-        <p>Address: 3000 swanton st, Melbourne, VIC, Australia</p>
-      </div>
-
-      <!-- Quick Links -->
-      <div class="col-md-4 mb-3">
-        <h5>Quick Links</h5>
-        <ul class="list-unstyled">
-          <li>
-            <a href="about-us.html" class="text-white text-decoration-none">About Us</a>
-          </li>
-          <li>
-            <a href="#" class="text-white text-decoration-none">Products</a>
-          </li>
-          <li>
-            <a href="#" class="text-white text-decoration-none">Consultation</a>
-          </li>
-          <li>
-            <a href="#" class="text-white text-decoration-none">FAQs</a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Social Media -->
-      <div class="col-md-4 mb-3">
-        <h5>Follow Us</h5>
-        <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i> Facebook</a><br />
-        <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i> Twitter</a><br />
-        <a href="#" class="text-white"><i class="bi bi-linkedin"></i> LinkedIn</a>
-      </div>
-    </div>
-
-    <hr class="bg-light" />
-
-    <!-- Copyright -->
-    <div class="text-center">
-      <small>© 2024 Flash Credit. All Rights Reserved.</small>
-    </div>
-  </div>
-</footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 </body>

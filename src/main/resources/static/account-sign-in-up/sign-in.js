@@ -14,11 +14,11 @@ async function loginUser() {
     const saltResult = await saltResponse.json();
     const salt = saltResult.salt; // Retrieve the salt
 
-    console.log("this is our salt " + salt);
+    // console.log("this is our salt " + salt);
 
     const hashedPassword = await hashPassword(password, salt); // Hash with the retrieved salt
 
-    console.log("this is the hashpa " + hashedPassword);
+    // console.log("this is the hashpa " + hashedPassword);
 
     const response = await fetch("http://localhost:8080/users/signIn", {
         method: "POST",
@@ -29,9 +29,21 @@ async function loginUser() {
     const result = await response.json();
 
     if (result.token) {
+
+
+        const tokenPayload = JSON.parse(atob(result.token.split(".")[1])); // Decode JWT
+
+
         sessionStorage.setItem("token", result.token); // Store JWT token
-        // alert("Login successful!");
-        window.location.href = "../index.html"; // Redirect to protected page
+
+        if (tokenPayload.role === "USER") {
+            window.location.href = "../index.html"; // Redirect non-admins
+        }
+        if(tokenPayload.role === "ADMIN" ) {
+        window.location.href = "../viewManager/managerAdmin.html"; // Redirect to protected page
+            }
+
+
     } else {
         alert("Login failed: " + result.message);
     }

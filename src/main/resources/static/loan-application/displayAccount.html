@@ -38,34 +38,52 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Consultation</a>
         </li>
-        <li class="nav-item">
-          <a class="btn btn-success text-white ms-2" href="#">Apply Now</a>
+        <li class="nav-item " id="signOutButton">
+          <a class="btn btn-success text-white ms-2" href="#" id="signOutLink">Sign out</a>
         </li>
-        <li class="nav-item">
-          <a class="btn btn-success text-white ms-2" href="#">Invest with us</a>
-        </li>
+
       </ul>
     </div>
   </div>
 </nav>
 
-<div class="container">
-  <a class="row align-items-center justify-content-center" href="amount-money.html"> go to amount</a>
-  <a class="row align-items-center justify-content-center" href="personal-info.html"> go to personal detail</a>
-  <a class="row align-items-center justify-content-center" href="bank-input.html"> go to bank input</a>
-  <a class="row align-items-center justify-content-center" href="phone-verification.html"> go to phone verfication</a>
+
+<style>
+  .account-card {
+    border-left: 5px solid #007bff;
+    transition: transform 0.3s ease-in-out;
+  }
+  .account-card:hover {
+    transform: scale(1.05);
+  }
+</style>
+
+<!--<h1 class="text-center" >this is all of ur bank account have a look </h1>-->
+
+
+<!--<h1 id = "placeholder">this is where list of account will get display</h1>-->
+
+
+
+<div class="container mt-5">
+  <h1 class="text-center text-primary mb-4">Your Linked Bank Accounts</h1>
+
+  <div id="accountsContainer" class="row g-4 justify-content-center">
+    <!-- Accounts will be displayed here -->
+  </div>
+
+  <div id="placeholder" class="text-center text-muted mt-3">
+    <p>No accounts available</p>
+  </div>
 </div>
-
-<h4 class="text-center" id="temp-loan-use-info"></h4>
-
-<h1 >this is all of ur bank account have a look </h1>
-
-
-<h1 id = "placeholder">this is something haha</h1>
 
 
 
 <button id ="continue">continue</button>
+
+<!--<div class="d-flex justify-content-center align-items-center vh-100">-->
+<!--  <button id="continue" class="btn btn-primary px-4 py-2">Continue</button>-->
+<!--</div>-->
 
 <!-- Footer -->
 <footer class="bg-secondary text-white py-4 mt-5">

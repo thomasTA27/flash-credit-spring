@@ -132,6 +132,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const loanAmount = sessionStorage.getItem('loanAmountInSession');
     const loanTenure = sessionStorage.getItem('loanDurationInSession');
 
+    const signOutLink = document.getElementById('signOutLink');
+
+
+    signOutLink.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent default link behavior
+        alert("you logout you will get direct to homepage")
+        sessionStorage.removeItem("token"); // Remove the token
+        window.location.href = "../index.html"; // Redirect to home page or login page
+    });
+
+
+
     // Check if values exist
     if (loanAmount && loanTenure) {
         console.log(`Loan Amount: AUD ${loanAmount}`);
@@ -143,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('No loan data found in sessionStorage.');
     }
 
-document.getElementById("test").addEventListener("click", () => {
+document.getElementById("activateConnectUserBank").addEventListener("click", () => {
 
     const popupManager = new PopupManager();
 

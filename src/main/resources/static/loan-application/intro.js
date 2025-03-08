@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+
     const token = sessionStorage.getItem("token"); // Retrieve token
 
     if (!token) {

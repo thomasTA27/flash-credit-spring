@@ -4,6 +4,7 @@ package org.example.flashcreditspring.util;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.example.flashcreditspring.model.User;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -19,9 +20,10 @@ public class JwtUtil {
 //        this.secretKey = Keys.hmacShaKeyFor(Base64.getDecoder().decode(secret));
 //    }
 
-    public String generateToken(String phoneNum) {
+    public String generateToken(User u) {
         return Jwts.builder()
-                .setSubject(phoneNum)
+                .setSubject(u.getPhoneNum() )
+                .claim("role", u.getRole()) // Store role in token
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60)) // 1 hour
                 .signWith(SignatureAlgorithm.HS256, secretKey)

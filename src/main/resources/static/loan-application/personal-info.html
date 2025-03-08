@@ -46,25 +46,20 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Consultation</a>
             </li>
-            <li class="nav-item">
-              <a class="btn btn-success text-white ms-2" href="#">Apply Now</a>
+
+
+            <li class="nav-item " id="signOutButton">
+              <a class="btn btn-success text-white ms-2" href="#" id="signOutLink">Sign out</a>
             </li>
-            <li class="nav-item">
-              <a class="btn btn-success text-white ms-2" href="#">Invest with us</a>
-            </li>
+
           </ul>
         </div>
       </div>
     </nav>
 
-    <style></style>
 
-    <div class="container">
-      <a class="row align-items-center justify-content-center" href="amount-money.html"> go to amount</a>
-      <a class="row align-items-center justify-content-center" href="personal-info.html"> go to personal detail</a>
-      <a class="row align-items-center justify-content-center" href="bank-input.html"> go to bank input</a>
-      <a class="row align-items-center justify-content-center" href="phone-verification.html"> go to phone verfication</a>
-    </div>
+
+
 
     <!-- Personal Information Form I SHOLD ADD 1 MORE FEATURE THAT SAVE THE DATA WHEN USER COME BACK AND CHANGE THEIR MIND -->
 
@@ -123,7 +118,7 @@
                   <div class="mb-3">
                     <label class="form-label">First name (as per your ID)</label>
                     <input type="text" class="form-control" id="first-name-input" required />
-                    <div class="form-text text-danger ">Please specify your first name.</div>
+
                   </div>
 
                   <div class="mb-3">
@@ -177,8 +172,10 @@
 
                   <!-- Contact details -->
                   <div class="mb-3">
-                    <label class="form-label">Mobile number (10 number include 04)</label>
+                    <label class="form-label">Mobile number (10 number include 04) </label>
                     <input type="tel" class="form-control" id="phone-num-input" placeholder="04__ ___ ___" required />
+
+                    <div class="form-text text-danger ">Please make sure it match with the account that you currently login in.</div>
                   </div>
 
                   <div class="mb-3">

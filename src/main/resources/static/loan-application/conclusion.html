@@ -40,39 +40,53 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Consultation</a>
                 </li>
-                <li class="nav-item">
-                    <a class="btn btn-success text-white ms-2" href="#">Apply Now</a>
+                <li class="nav-item " id="signOutButton">
+                    <a class="btn btn-success text-white ms-2" href="#" id="signOutLink">Sign out</a>
                 </li>
-                <li class="nav-item">
-                    <a class="btn btn-success text-white ms-2" href="#">Invest with us</a>
-                </li>
+
             </ul>
         </div>
     </div>
 </nav>
 
-<div class="container">
-    <a class="row align-items-center justify-content-center" href="amount-money.html"> go to amount</a>
-    <a class="row align-items-center justify-content-center" href="personal-info.html"> go to personal detail</a>
-    <a class="row align-items-center justify-content-center" href="bank-input.html"> go to bank input</a>
-    <a class="row align-items-center justify-content-center" href="phone-verification.html"> go to phone verfication</a>
-</div>
 
-<h4 class="text-center" id="temp-loan-use-info"></h4>
+<div class="container mt-5">
+    <h1 class="text-center mb-4 text-success">Ensure Everything is Correct</h1>
 
+    <div class="card shadow p-4">
+        <h2 class="text-center text-success">here is your data</h2>
 
-<div ckass = "container">
-<h1 class="text-center" >ensure everything is correct  </h1>
-
-
-    <div class="text-center" id="sessionDataDisplay">
-        <h2>Session Storage Data</h2>
-        <ul id="sessionList"></ul>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover mt-3">
+                <thead class="table-dark">
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+                </thead>
+                <tbody id="sessionTableBody"></tbody>
+            </table>
+        </div>
     </div>
 
-    <button id ="finish">continue</button>
+    <div class="text-center mt-4">
+        <button id="finish" class="btn btn-lg btn-success px-5">Confirm</button>
+    </div>
 
 </div>
+
+<!--<div class = "container">-->
+<!--<h1 class="text-center" >ensure everything is correct  </h1>-->
+
+
+<!--    <div class="text-center" id="sessionDataDisplay">-->
+<!--        <h2>Session Storage Data</h2>-->
+<!--        <ul id="sessionList"></ul>-->
+<!--    </div>-->
+
+<!--    <button id ="finish">continue</button>-->
+
+<!--</div>-->
 
 <!-- Footer -->
 <footer class="bg-secondary text-white py-4 mt-5">

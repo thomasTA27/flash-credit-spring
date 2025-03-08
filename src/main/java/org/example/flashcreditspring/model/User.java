@@ -32,6 +32,10 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL , orphanRemoval = true)
     private Borrower borrower;
 
+    @Column(nullable = false)
+    private String role; // "USER" or "ADMIN"
+
+
     public boolean verifyPassword(String sha256HashedPasswordFromFrontend) {
         return BCrypt.checkpw(sha256HashedPasswordFromFrontend, this.password);
     }
